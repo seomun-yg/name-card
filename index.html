@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7fbff" />
+  <title>서문여경 | 디지털 명함</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nunito:wght@600;700;800&display=swap');
+
+    :root {
+      --ink: #24364b;
+      --muted: #617487;
+      --blue: #4c9ce8;
+      --blue-dark: #277bc8;
+      --sky: #eaf6ff;
+      --mint: #e9faf4;
+      --line: #dceaf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      padding: 28px 18px;
+      color: var(--ink);
+      font-family: "Gowun Dodum", sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, #d9f3ff 0 4px, transparent 5px),
+        radial-gradient(circle at 91% 83%, #d8f7e8 0 5px, transparent 6px),
+        linear-gradient(135deg, #f8fcff 0%, #eef9ff 52%, #f5fffb 100%);
+    }
+
+    .card {
+      position: relative;
+      width: min(100%, 470px);
+      padding: 42px 38px 36px;
+      text-align: center;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 20px 55px rgba(70, 132, 176, .17);
+      backdrop-filter: blur(12px);
+    }
+
+    .card::before, .card::after {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      content: "";
+      z-index: -1;
+    }
+    .card::before { top: -92px; left: -82px; background: #e0f4ff; }
+    .card::after { right: -98px; bottom: -105px; background: #e4f8ef; }
+
+    .lab-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 12px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      color: var(--blue-dark);
+      font-family: "Nunito", sans-serif;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      background: var(--sky);
+    }
+    .lab-mark span { font-size: 1rem; }
+
+    .profile-frame {
+      width: 142px;
+      height: 142px;
+      padding: 6px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #81caff, #8bd9b6);
+      box-shadow: 0 12px 24px rgba(80, 159, 207, .22);
+    }
+    .profile-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 4px solid white;
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Nunito", "Gowun Dodum", sans-serif;
+      font-size: clamp(2rem, 7vw, 2.55rem);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+    .school {
+      margin: 10px 0 0;
+      color: var(--blue-dark);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .intro {
+      margin: 22px 0;
+      padding: 15px 18px;
+      border: 1px dashed #bcdced;
+      border-radius: 15px;
+      color: #3e617c;
+      font-size: 1.08rem;
+      letter-spacing: .14em;
+      background: #f9fdff;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 0 0 27px;
+    }
+    .tag {
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: #3d637d;
+      font-size: .86rem;
+      background: #f1f8fc;
+    }
+    .tag:nth-child(2) { color: #39715d; background: var(--mint); }
+    .tag:nth-child(3) { color: #6860a1; background: #f3f0ff; }
+
+    .email-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 15px;
+      color: white;
+      font-family: "Gowun Dodum", sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(110deg, #4d9fe9, #5caeea);
+      box-shadow: 0 9px 18px rgba(55, 143, 218, .28);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .email-button:hover { transform: translateY(-2px); box-shadow: 0 13px 22px rgba(55, 143, 218, .33); }
+    .email-button:focus-visible { outline: 3px solid #9cd5ff; outline-offset: 3px; }
+    .email-icon { font-size: 1.12rem; }
+
+    .molecule { position: absolute; color: #b2ddef; font-size: 1.45rem; opacity: .75; }
+    .molecule.one { top: 28px; right: 31px; }
+    .molecule.two { bottom: 24px; left: 30px; color: #b6e6d1; }
+
+    @media (max-width: 400px) {
+      body { padding: 16px; }
+      .card { padding: 31px 23px 26px; border-radius: 24px; }
+      .profile-frame { width: 124px; height: 124px; }
+      .intro { margin: 18px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="서문여경의 디지털 명함">
+    <span class="molecule one" aria-hidden="true">⚛</span>
+    <span class="molecule two" aria-hidden="true">✦</span>
+    <div class="lab-mark"><span aria-hidden="true">🧪</span> BIO LAB</div>
+    <div class="profile-frame">
+      <img src="profile.png" alt="서문여경 프로필 사진" />
+    </div>
+    <h1>서문여경</h1>
+    <p class="school">안계고등학교</p>
+    <p class="intro">생 물 조 아</p>
+    <div class="tags" aria-label="관심사">
+      <span class="tag">🧬 생물학</span>
+      <span class="tag">💻 바이브코딩</span>
+      <span class="tag">🔬 생물정보학</span>
+    </div>
+    <a class="email-button" href="mailto:smyg031710@naver.com" aria-label="서문여경에게 이메일 보내기">
+      <span class="email-icon" aria-hidden="true">✉</span> 이메일 보내기
+    </a>
+  </main>
+</body>
+</html>
